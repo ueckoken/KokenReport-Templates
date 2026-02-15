@@ -1,7 +1,7 @@
 #!/bin/env -S typst watch
 #import "buhou-tmpl.typ":*
 
-#main(
+#show: main.with(
   no:78,
   title:[工学研究部部報用テンプレート],
   author:[XX 工研太郎],
@@ -12,8 +12,7 @@
   serif:"Noto Serif CJK JP",
   sansserif:"Noto Sans CJK JP",
   monospace:"Monaspace Argon",
-
-)[
+)
 
 = セクション1
 
@@ -22,5 +21,3 @@
 == サブセクション
 
 ううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううううう
-
-]
