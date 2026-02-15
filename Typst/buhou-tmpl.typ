@@ -18,7 +18,7 @@
     header: grid(columns: (auto, 1fr, auto), stroke: (bottom: 0.5pt), inset: (bottom: rls))[][][#text(bottom-edge: "baseline", [工学研究部 部報 #no 号])],
     footer: grid(columns: (auto, 1fr, auto), stroke: (top: 0.5pt), inset: (top: rls))[電気通信大学 工学研究部][][#align(right)[#link("https://koken.club.uec.ac.jp/")\ #link("ueckoken@gmail.com")]],
   )
-  set par(first-line-indent:(amount:1em,all:true))
+  set par(first-line-indent: (amount: 1em, all: true), justify: true, linebreaks: "simple")
   set text(
     lang:"ja",region:"jp",
     font:serif,size:rem
