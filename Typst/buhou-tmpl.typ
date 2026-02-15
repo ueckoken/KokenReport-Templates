@@ -1,9 +1,9 @@
 #let main(
   no:"XX",
   title:"部報サンプル",author:"工研太郎",brief:"Hello from typst!",
-  serif:"Noto Serif CJK JP",
-  sansserif:"Noto Sans CJK JP",
-  monospace:"Monaspace Argon",
+  serif:("New Computer Modern", "Noto Serif CJK JP", "Noto Serif JP"), // = LuaTeX(-ja)標準 (Latin Modern Roman, 源ノ明朝)
+  sansserif:("Noto Sans CJK JP", "Noto Sans JP"), // = LuaTeX-ja標準 (源ノ角ゴシック)
+  monospace:("DejaVu Sans Mono"), // ≠ LuaTeX標準 (Latin Modern Mono?)
   body
 )={
   set page(

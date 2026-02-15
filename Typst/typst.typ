@@ -9,9 +9,9 @@
     いんとろ
     あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
   ],
-  serif:"Noto Serif CJK JP",
-  sansserif:"Noto Sans CJK JP",
-  monospace:"Monaspace Argon",
+  // serif:("Latin Modern Roman", "Source Han Serif"),
+  // sansserif:("Latin Modern Sans", "Source Han Sans"),
+  // monospace:("Latin Modern Mono"),
 )
 
 = セクション1
