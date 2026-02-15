@@ -2,7 +2,7 @@
 #import "buhou-tmpl.typ": main
 
 #show: main.with(
-  no:78,
+  no:"XX",
   title:[工学研究部部報用テンプレート],
   author:[XX 工研太郎],
   brief:[

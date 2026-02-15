@@ -1,6 +1,7 @@
-#let rem = 12pt
-#let rlh = 1.6*rem;
-#let rls = rlh - rem;
+#let rem = 12pt*0.924715 // ltjsclassesの12ptは12ptではない
+#let mpt = rem/10
+#let rlh = 16*mpt;
+#let rls = rlh - rem
 
 #let main(
   no:"XX",
@@ -20,26 +21,43 @@
   set par(first-line-indent:(amount:1em,all:true))
   set text(
     lang:"ja",region:"jp",
-    font:serif,size:12pt
+    font:serif,size:rem
   )
 
-  set par(leading: rls, spacing: rls); set text(top-edge: rem, bottom-edge: 0pt)
+  set par(leading: rls, spacing: rls)
+  set text(top-edge: rem, bottom-edge: 0pt)
+
   set heading(numbering: "1.1　")
   show heading: x => block(align(horizon, x))
-  show heading: set text(font: sansserif, size: 12pt)
+  show heading: set text(font: sansserif, size: rem)
   show heading: set block(height: rem, spacing: rls)
   show heading.where(level: 1): set block(height: 2*rem+rls)
-  show heading.where(level: 1): set text(size: 13pt)
+  show heading.where(level: 1): set text(size: 12*mpt)
 
   show link:x=>text(font:monospace,size:9pt,x)
   show raw:x=>text(font:monospace,x)
 
-  v(2em)
   align(center)[
-    #text(size:20pt,font:sansserif,title)#v(1em)
-    #text(size:14pt,font:sansserif,author)#v(1em)
-    #box(inset:(x:2em),text(size:10pt,brief))#v(1em)
+    #set par(leading: 0pt, spacing: 0pt)
+    #set text(top-edge: "ascender", bottom-edge: "descender")
+    
+    #block(height: 0pt)
+    #set text(size: 17.28*mpt) // ltjsclasses \LARGE 10ptで17.28pt、行間25pt
+    #v(2em)
+    #text(font: sansserif, title)
+    #set text(size: 12*mpt) // ltjsclasses \large 10ptで12pt、行間17pt
+    #v(1.5em)
+    #text(font: sansserif, author)
+    #v(1em)
+    // #text(font: serif, date)
+    #set text(size: 17.28*mpt) // なんでここが\LARGEなんですか???
+    #v(1.5em)
+    #set par(leading: (13-9)*mpt, spacing: (13-9)*mpt)
+    #set text(size: 9*mpt) // ltjsclasses \small 10ptで9pt、行間13pt
+    #box(inset:(x:2em), [#v(-2em)#brief])
+    #v(1.5em)
   ]
+
   show:columns.with(2)
   body
 }
