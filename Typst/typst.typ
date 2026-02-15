@@ -1,5 +1,5 @@
 #!/bin/env -S typst watch
-#import "buhou-tmpl.typ":*
+#import "buhou-tmpl.typ": main
 
 #show: main.with(
   no:78,

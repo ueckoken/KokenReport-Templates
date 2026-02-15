@@ -1,3 +1,7 @@
+#let rem = 12pt
+#let rlh = 1.6*rem;
+#let rls = rlh - rem;
+
 #let main(
   no:"XX",
   title:"部報サンプル",author:"工研太郎",brief:"Hello from typst!",
@@ -7,25 +11,26 @@
   body
 )={
   set page(
-    paper:"a4",margin:(top:1.3in,x:0.787in,bottom:1.18in),
-    header-ascent:1em,footer-descent:1em,
-    header:grid(columns:(auto,1fr,auto),stroke:(bottom:0.5pt),inset:(bottom:8pt))[][][工学研究部 部報 #no 号],
-    footer:grid(columns:(auto,1fr,auto),stroke:(top:0.5pt),inset:(top:8pt))[電気通信大学 工学研究部][][
-      #align(right)[
-        #link("https://koken.club.uec.ac.jp/")\
-        #link("ueckoken@gmail.com")
-      ]
-    ]
+    paper: "a4", margin: (top: 1.3in, x: 0.787in, bottom: 1.18in), // LaTeXテンプレの謎の値
+    header-ascent: 1cm - 1.38*rem, // ltjsarticleのheadsep = footskip(A4で1cm) - topskip(1.38zh), 
+    footer-descent: 1cm - rlh, // 本文下端から1行目ベースラインまで - 行送り = footskip(A4で1cm) - baseline(10ptで16pt)
+    header: grid(columns: (auto, 1fr, auto), stroke: (bottom: 0.5pt), inset: (bottom: rls))[][][#text(bottom-edge: "baseline", [工学研究部 部報 #no 号])],
+    footer: grid(columns: (auto, 1fr, auto), stroke: (top: 0.5pt), inset: (top: rls))[電気通信大学 工学研究部][][#align(right)[#link("https://koken.club.uec.ac.jp/")\ #link("ueckoken@gmail.com")]],
   )
   set par(first-line-indent:(amount:1em,all:true))
   set text(
     lang:"ja",region:"jp",
     font:serif,size:12pt
   )
-  set heading(numbering:"1.")
-  show heading:x=>text(font:sansserif,x)
-  show heading.where(level:1):x=>text(size:13pt,x)
-  show heading.where(level:2):x=>text(size:12pt,x)
+
+  set par(leading: rls, spacing: rls); set text(top-edge: rem, bottom-edge: 0pt)
+  set heading(numbering: "1.1　")
+  show heading: x => block(align(horizon, x))
+  show heading: set text(font: sansserif, size: 12pt)
+  show heading: set block(height: rem, spacing: rls)
+  show heading.where(level: 1): set block(height: 2*rem+rls)
+  show heading.where(level: 1): set text(size: 13pt)
+
   show link:x=>text(font:monospace,size:9pt,x)
   show raw:x=>text(font:monospace,x)
 
