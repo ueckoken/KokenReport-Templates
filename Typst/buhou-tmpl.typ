@@ -6,6 +6,7 @@
 #let main(
   no:"XX",
   title:"部報サンプル",author:"工研太郎",brief:"Hello from typst!",
+  title-sans: false, // ltjsarticleでは明朝
   serif:("New Computer Modern", "Noto Serif CJK JP", "Noto Serif JP"), // = LuaTeX(-ja)標準 (Latin Modern Roman, 源ノ明朝)
   sansserif:("Noto Sans CJK JP", "Noto Sans JP"), // = LuaTeX-ja標準 (源ノ角ゴシック)
   monospace:("DejaVu Sans Mono"), // ≠ LuaTeX標準 (Latin Modern Mono?)
@@ -37,6 +38,7 @@
   show link:x=>text(font:monospace,size:9pt,x)
   show raw:x=>text(font:monospace,x)
 
+  let font-title = if title-sans {sansserif} else {serif}
   align(center)[
     #set par(leading: 0pt, spacing: 0pt)
     #set text(top-edge: "ascender", bottom-edge: "descender")
@@ -44,10 +46,10 @@
     #block(height: 0pt)
     #set text(size: 17.28*mpt) // ltjsclasses \LARGE 10ptで17.28pt、行間25pt
     #v(2em)
-    #text(font: sansserif, title)
+    #text(font: font-title, title)
     #set text(size: 12*mpt) // ltjsclasses \large 10ptで12pt、行間17pt
     #v(1.5em)
-    #text(font: sansserif, author)
+    #text(font: font-title, author)
     #v(1em)
     // #text(font: serif, date)
     #set text(size: 17.28*mpt) // なんでここが\LARGEなんですか???
