@@ -22,7 +22,8 @@
   set par(first-line-indent: (amount: 1em, all: true), justify: true, linebreaks: "simple")
   set text(
     lang:"ja",region:"jp",
-    font:serif,size:rem
+    font:serif,size:rem,
+    weight:"regular" // LuaTeX-jaでは原ノ味明朝 Regular
   )
 
   set par(leading: rls, spacing: rls)
@@ -30,7 +31,7 @@
 
   set heading(numbering: "1.1　")
   show heading: x => block(align(horizon, x))
-  show heading: set text(font: sansserif, size: rem)
+  show heading: set text(font: sansserif, size: rem, weight: "medium") // LuaTeX-jaでは原ノ味角ゴシック Medium
   show heading: set block(height: rem, spacing: rls)
   show heading.where(level: 1): set block(height: 2*rem+rls)
   show heading.where(level: 1): set text(size: 12*mpt)
