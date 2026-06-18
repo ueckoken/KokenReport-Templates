@@ -7,8 +7,8 @@
   no:"XX",
   title:"部報サンプル",author:"工研太郎",brief:"Hello from typst!",
   title-sans: false, // ltjsarticleでは明朝
-  serif:("New Computer Modern", "Noto Serif CJK JP", "Noto Serif JP"), // = LuaTeX(-ja)標準 (Latin Modern Roman, 源ノ明朝)
-  sansserif:("Noto Sans CJK JP", "Noto Sans JP"), // = LuaTeX-ja標準 (源ノ角ゴシック)
+  serif:("New Computer Modern", "Noto Serif CJK JP", "Noto Serif JP"), // = 本文 LuaTeX(-ja)標準 (Latin Modern Roman, 源ノ明朝)
+  sansserif:("New Computer Modern", "Noto Sans CJK JP", "Noto Sans JP"), // = 見出し LuaTeX-ja標準 (Latin Modern Roman, 源ノ角ゴシック)
   monospace:("DejaVu Sans Mono"), // ≠ LuaTeX標準 (Latin Modern Mono?)
   body
 )={

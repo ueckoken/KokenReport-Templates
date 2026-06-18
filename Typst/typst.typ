@@ -13,7 +13,7 @@
   // Notoフォントがインストールされていない場合は、インストールするかserif, sansserifに任意のフォントを指定してください。
   // monospaceはTypst内蔵フォントを使用するため必須ではありません。
   // serif:("Latin Modern Roman", "Source Han Serif"),
-  // sansserif:("Latin Modern Sans", "Source Han Sans"),
+  // sansserif:("Latin Modern Roman", "Source Han Sans"),
   // monospace:("Latin Modern Mono"),
 )
 
