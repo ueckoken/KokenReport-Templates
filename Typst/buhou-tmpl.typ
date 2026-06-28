@@ -7,8 +7,8 @@
   no:"XX",
   title:"部報サンプル",author:"工研太郎",brief:"Hello from typst!",
   title-sans: false, // ltjsarticleでは明朝
-  serif:("New Computer Modern", "Noto Serif CJK JP", "Noto Serif JP"), // = LuaTeX(-ja)標準 (Latin Modern Roman, 源ノ明朝)
-  sansserif:("Noto Sans CJK JP", "Noto Sans JP"), // = LuaTeX-ja標準 (源ノ角ゴシック)
+  serif:("New Computer Modern", "Noto Serif CJK JP", "Noto Serif JP"), // = 本文 LuaTeX(-ja)標準 (Latin Modern Roman, 源ノ明朝)
+  sansserif:("New Computer Modern", "Noto Sans CJK JP", "Noto Sans JP"), // = 見出し LuaTeX-ja標準 (Latin Modern Roman, 源ノ角ゴシック)
   monospace:("DejaVu Sans Mono"), // ≠ LuaTeX標準 (Latin Modern Mono?)
   body
 )={
@@ -22,7 +22,8 @@
   set par(first-line-indent: (amount: 1em, all: true), justify: true, linebreaks: "simple")
   set text(
     lang:"ja",region:"jp",
-    font:serif,size:rem
+    font:serif,size:rem,
+    weight:"regular" // LuaTeX-jaでは原ノ味明朝 Regular
   )
 
   set par(leading: rls, spacing: rls)
@@ -30,7 +31,7 @@
 
   set heading(numbering: "1.1　")
   show heading: x => block(align(horizon, x))
-  show heading: set text(font: sansserif, size: rem)
+  show heading: set text(font: sansserif, size: rem, weight: "medium") // LuaTeX-jaでは原ノ味角ゴシック Medium
   show heading: set block(height: rem, spacing: rls)
   show heading.where(level: 1): set block(height: 2*rem+rls)
   show heading.where(level: 1): set text(size: 12*mpt)
@@ -52,7 +53,6 @@
     #text(font: font-title, author)
     #v(1em)
     // #text(font: serif, date)
-    #set text(size: 17.28*mpt) // なんでここが\LARGEなんですか???
     #v(1.5em)
     #set par(leading: (13-9)*mpt, spacing: (13-9)*mpt)
     #set text(size: 9*mpt) // ltjsclasses \small 10ptで9pt、行間13pt
