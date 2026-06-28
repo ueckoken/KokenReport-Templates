@@ -53,7 +53,6 @@
     #text(font: font-title, author)
     #v(1em)
     // #text(font: serif, date)
-    #set text(size: 17.28*mpt) // なんでここが\LARGEなんですか???
     #v(1.5em)
     #set par(leading: (13-9)*mpt, spacing: (13-9)*mpt)
     #set text(size: 9*mpt) // ltjsclasses \small 10ptで9pt、行間13pt
