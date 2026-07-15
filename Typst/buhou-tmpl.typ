@@ -25,6 +25,7 @@
     font:serif,size:rem,
     weight:"regular" // LuaTeX-jaでは原ノ味明朝 Regular
   )
+  show regex("[\p{scx=Latin}\p{Nd}]"): set text(size: 1em/jascale) // ltjsclassesでは和文が小さいが、ここでは欧文を大きくする (和文を選択するとレイアウトが崩れる https://forum.typst.app/t/typst-wish-list-for-a-japanese-user/2783/3)
 
   set par(leading: rls, spacing: rls)
   set text(top-edge: rem, bottom-edge: 0pt)
