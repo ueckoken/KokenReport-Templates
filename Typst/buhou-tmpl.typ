@@ -1,6 +1,11 @@
-#let rem = 12pt*0.924715 // ltjsclassesの12ptは12ptではない
-#let mpt = rem/10
-#let rlh = 16*mpt;
+// https://tug.ctan.org/macros/luatex/generic/luatexja/doc/ltjsclasses.pdf
+
+#let jascale = 0.924715 // ltjsclassesの和文は小さい
+#let magscale = 1.2 // ltjsclasses 12pt指定時
+#let mpt = magscale*1pt // ltjsclassesでのレイアウトの基準
+
+#let rem = 10pt*magscale*jascale
+#let rlh = 16*mpt
 #let rls = rlh - rem
 
 #let main(
@@ -16,7 +21,7 @@
     paper: "a4", margin: (top: 1.3in, x: 0.787in, bottom: 1.18in), // LaTeXテンプレの謎の値
     header-ascent: 1cm - 1.38*rem, // ltjsarticleのheadsep = footskip(A4で1cm) - topskip(1.38zh), 
     footer-descent: 1cm - rlh, // 本文下端から1行目ベースラインまで - 行送り = footskip(A4で1cm) - baseline(10ptで16pt)
-    header: grid(columns: (auto, 1fr, auto), stroke: (bottom: 0.5pt), inset: (bottom: rls))[][][#text(bottom-edge: "baseline", [工学研究部 部報 #no 号])],
+    header: grid(columns: (auto, 1fr, auto), stroke: (bottom: 0.5pt), inset: (bottom: 6*mpt))[][][#text(bottom-edge: "baseline", [工学研究部 部報 #no 号])],
     footer: grid(columns: (auto, 1fr, auto), stroke: (top: 0.5pt), inset: (top: rls))[電気通信大学 工学研究部][][#align(right)[#link("https://koken.club.uec.ac.jp/")\ #link("ueckoken@gmail.com")]],
   )
   set par(first-line-indent: (amount: 1em, all: true), justify: true, linebreaks: "simple")
@@ -35,7 +40,7 @@
   show heading: set text(font: sansserif, size: rem, weight: "medium") // LuaTeX-jaでは原ノ味角ゴシック Medium
   show heading: set block(height: rem, spacing: rls)
   show heading.where(level: 1): set block(height: 2*rem+rls)
-  show heading.where(level: 1): set text(size: 12*mpt)
+  show heading.where(level: 1): set text(size: 12*mpt*jascale)
 
   show link:x=>text(font:monospace,size:9pt,x)
   show raw:x=>text(font:monospace,x)
@@ -46,17 +51,17 @@
     #set text(top-edge: "ascender", bottom-edge: "descender")
     
     #block(height: 0pt)
-    #set text(size: 17.28*mpt) // ltjsclasses \LARGE 10ptで17.28pt、行間25pt
+    #set text(size: 17.28*mpt*jascale) // ltjsclasses \LARGE 欧文17.28mpt、行間25mpt
     #v(2em)
     #text(font: font-title, title)
-    #set text(size: 12*mpt) // ltjsclasses \large 10ptで12pt、行間17pt
+    #set text(size: 12*mpt*jascale) // ltjsclasses \large 欧文12mpt、行間17mpt
     #v(1.5em)
     #text(font: font-title, author)
     #v(1em)
     // #text(font: serif, date)
     #v(1.5em)
     #set par(leading: (13-9)*mpt, spacing: (13-9)*mpt)
-    #set text(size: 9*mpt) // ltjsclasses \small 10ptで9pt、行間13pt
+    #set text(size: 9*mpt*jascale) // ltjsclasses \small 欧文9mpt、行間13mpt
     #box(inset:(x:2em), [#v(-2em)#brief])
     #v(1.5em)
   ]
